@@ -27,7 +27,7 @@ A fully automated Bash script that:
 
 ```bash
 sudo apt update && sudo apt upgrade -y
-sudo apt install curl unzip zip -y
+sudo apt install p7zip-full -y
 
 # Install WP-CLI
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
@@ -43,3 +43,7 @@ az version
 ZIP_DIR="/home/ubuntu/herlan_backup_zip"
 mkdir -p "$ZIP_DIR"
 chmod 755 "$ZIP_DIR"
+
+# Setup Corn Job
+crontab -e
+*/40 * * * * /home/ubuntu/herlan_backup.sh >> /var/log/herlan_backup.log 2>&1
